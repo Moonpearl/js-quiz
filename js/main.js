@@ -24,6 +24,21 @@ function displayQuestion(index) {
 function handleSubmit(event) {
   // Empêche le rechargement de la page
   event.preventDefault();
+  // Récupère le numéro de la bonne réponse à la question actuelle
+  const rightAnswer = questionData[currentQuestionIndex].rightAnswer
+  // Récupère le numéro de la réponse fournie par l'utilisateur
+  const formData = $('#question-form').serializeArray();
+  const userAnswer = Number(formData[0].value);
+  // Si le numéro de la réponse fournie par l'utilisateur est égal au numéro de la bonne réponse à la question actuelle
+  if (rightAnswer === userAnswer) {
+    // Affiche un message "bonne réponse"
+    alert('Bonne réponse!');
+  // Sinon
+  } else {
+    // Affiche un message "mauvaise réponse"
+    alert('Mauvaise réponse…');
+  }
+
   // Augmente l'index de la question actuelle
   currentQuestionIndex++;
   // Affiche la question actuelle dans la page
@@ -39,4 +54,3 @@ form.addEventListener("submit", handleSubmit);
 var currentQuestionIndex = 0;
 // Affiche la première question
 displayQuestion(currentQuestionIndex);
-
