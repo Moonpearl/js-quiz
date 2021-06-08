@@ -49,6 +49,11 @@ function handleSubmit(event) {
   const rightAnswer = questionData[currentQuestionIndex].rightAnswer
   // Récupère le numéro de la réponse fournie par l'utilisateur
   const formData = $('#question-form').serializeArray();
+  // Si le formulaire ne contient pas de donnée, affiche une alerte et interrompt la fonction
+  if (formData.length === 0) {
+    alert('Vous devez sélectionner une réponse!');
+    return;
+  } 
   const userAnswer = Number(formData[0].value);
   // Récupère la liste des réponses dans la page
 
@@ -76,4 +81,3 @@ form.addEventListener("submit", handleSubmit);
 let currentQuestionIndex = 0;
 // Affiche la première question
 displayQuestion(currentQuestionIndex);
-  
