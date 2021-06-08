@@ -1,21 +1,21 @@
 // Définit une action permettant d'afficher une question dans la page
 function displayQuestion(index) {
   // Récupère l'élément qui contient le numéro de la question
-  var questionId = document.getElementById("question-id");
+  const questionId = document.getElementById("question-id");
   // Modifie le contenu de cet élément
   questionId.innerText = index + 1;
 
   // Récupère l'élément qui contient le texte de la question
-  var questionText = document.getElementById("current-question-text");
+  const questionText = document.getElementById("current-question-text");
   // Remplace le contenu de cet élément par le texte de la question actuelle
   questionText.innerText = questionData[index].text;
 
   // Pour chaque numéro de réponse variant de 1 à 4
-  for (let i = 1; i < 5; i++) {
+  for (let i = 1; i <= 4; i++) {
     // Récupère l'élément correspondant au numéro de la réponse
-    var answer = document.getElementById("answer" + i + "-caption");
+    const answer = document.getElementById("answer" + i + "-caption");
     // Remplace le contenu de cet élément par le texte de la réponse
-    var key = "answer" + i;
+    const key = "answer" + i;
     answer.innerText = questionData[index][key]
   };
 }
@@ -68,12 +68,12 @@ function handleSubmit(event) {
 }
 
 // Récupère le formulaire
-var form = document.getElementById("question-form");
+const form = document.getElementById("question-form");
 // Associe une action au fait de valider le formulaire
 form.addEventListener("submit", handleSubmit);
 
 // Initialise l'index de la question actuelle
-var currentQuestionIndex = 0;
+let currentQuestionIndex = 0;
 // Affiche la première question
 displayQuestion(currentQuestionIndex);
   
