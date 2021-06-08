@@ -20,6 +20,26 @@ function displayQuestion(index) {
   };
 }
 
+// Définit une fonction qui permet de créer un nouvel élément dans la liste de réponses
+// text: le texte à faire apparaître dans l'élément
+// success: si l'élément correspond à une réussite (vrai) ou un échec (faux)
+function createAnswersListItem(text, success) {
+  // Récupère la liste des réponses
+  const answersList = document.getElementById("answers-list")
+  // Crée l'élément à ajouter dans la liste de réponses
+  var answersListItem = document.createElement('li');
+  answersListItem.className = "list-group-item list-group-item-action list-group-item-" + (success === true ? 'success' : 'danger');
+  answersList.appendChild(answersListItem);
+  // Crée l'icône
+  const icon = document.createElement('i');
+  answersListItem.appendChild(icon);
+  icon.classList = "fas fa-thumbs-"  + (success === true ? 'up' : 'down');
+  // Crée l'élément contenant le texte de la question
+  const questionText = document.createElement('span');
+  answersListItem.appendChild(questionText);
+  questionText.innerText = text;
+}
+
 // Définit une action permettant de gérer la validation du formulaire
 function handleSubmit(event) {
   // Empêche le rechargement de la page
@@ -29,15 +49,12 @@ function handleSubmit(event) {
   // Récupère le numéro de la réponse fournie par l'utilisateur
   const formData = $('#question-form').serializeArray();
   const userAnswer = Number(formData[0].value);
-  // Si le numéro de la réponse fournie par l'utilisateur est égal au numéro de la bonne réponse à la question actuelle
-  if (rightAnswer === userAnswer) {
-    // Affiche un message "bonne réponse"
-    alert('Bonne réponse!');
-  // Sinon
-  } else {
-    // Affiche un message "mauvaise réponse"
-    alert('Mauvaise réponse…');
-  }
+  // Récupère la liste des réponses dans la page
+
+  // Détermine si le numéro de la réponse fournie par l'utilisateur est égal au numéro de la bonne réponse à la question actuelle
+  const isUserAnswerRight = rightAnswer === userAnswer;
+  // Crée un nouvel élément dans la liste de réponses en tenant compte de s'il s'agit d'un succès ou d'un échec
+  createAnswersListItem(questionData[currentQuestionIndex].text, isUserAnswerRight);
 
   // Augmente l'index de la question actuelle
   currentQuestionIndex++;
@@ -54,3 +71,7 @@ form.addEventListener("submit", handleSubmit);
 var currentQuestionIndex = 0;
 // Affiche la première question
 displayQuestion(currentQuestionIndex);
+
+
+
+
