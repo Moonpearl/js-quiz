@@ -44,6 +44,7 @@ function createAnswersListItem(text, success) {
 function handleSubmit(event) {
   // Empêche le rechargement de la page
   event.preventDefault();
+ 
   // Récupère le numéro de la bonne réponse à la question actuelle
   const rightAnswer = questionData[currentQuestionIndex].rightAnswer
   // Récupère le numéro de la réponse fournie par l'utilisateur
@@ -58,6 +59,10 @@ function handleSubmit(event) {
 
   // Augmente l'index de la question actuelle
   currentQuestionIndex++;
+  // S'il n'y a plus de question, réinitialise l'index de la question actuelle
+  if (currentQuestionIndex === questionData.length) {
+    currentQuestionIndex = 0;
+  }
   // Affiche la question actuelle dans la page
   displayQuestion(currentQuestionIndex);
 }
@@ -71,7 +76,4 @@ form.addEventListener("submit", handleSubmit);
 var currentQuestionIndex = 0;
 // Affiche la première question
 displayQuestion(currentQuestionIndex);
-
-
-
-
+  
