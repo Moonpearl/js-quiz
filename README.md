@@ -2,7 +2,7 @@
 
 J'ai créé une super page de quizz, mais je ne sais pas comment la faire fonctionner... 😢 Jean-Louis, mon pote développeur web, m'a donné des instructions, en me disant "c'est facile, t'inquiète!", mais je ne m'en sors pas.
 
-La liste des questions, avec leurs réponses, sont dans le fichier **js/data.js**. Il faudrait ajouter la code nécessaire pour faire fonctionner le quizz dans le fichier **js/main.js**.
+La liste des questions, avec leurs réponses, sont dans le fichier **js/data.js**. Il faudrait ajouter le code nécessaire pour faire fonctionner le quizz dans le fichier **js/main.js**.
 
 Je te laisse les instructions de Jean-Louis. Peux-tu me donner un coup de main? 🥰
 
