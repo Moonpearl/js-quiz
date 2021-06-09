@@ -96,3 +96,30 @@ Lorsqu'une nouvelle question est chargée, les réponses sont mélangées dans u
   <summary>Indice</summary>
   Math.random()
 </details>
+
+## Deuxième partie: mode création
+
+> Cette deuxième partie concerne la page `create.html`. Le code doit être écrit dans le fichier `js/edit.js`.
+
+### 1. Afficher la liste des questions
+
+Lorsque la page est chargée, des élements de liste avec le texte de chaque question doivent être générés dynamiquement.
+
+### 2. Créer une nouvelle question
+
+Lorsque l'on valide le formulaire d'ajout de question, un nouvel élément contenant le texte saisi doit être ajouté à la liste.
+
+### 3. Modifier une question
+
+Lorsque l'on clique sur le bouton "Modifier", le formulaire de classe `question-name-edit` doit apparaître, et l'élément de classe `question-name` doit apparaître. Lorsque l'on valide ce formulaire, le nom de la question doit changer.
+
+### 4. Supprimer une question
+
+Lorsque l'on clique sur le bouton "Supprimer", la question doit disparaître.
+
+### Super bonus de la mort: remplacer les données statiques par des appels d'API
+
+- Au chargement de la page, la création de la liste doit se baser sur le résultat de la requête `GET http://localhost:8000/questions`.
+- Lorsque l'on valide le formulaire d'ajout de question, l'ajout de la question dans la page doit se baser sur le résultat de la requête `POST http://localhost:8000/questions`.
+- Lorsque l'on valide le formulaire de modification de question, la modification de la question dans la page doit se baser sur le résultat de la requête `PUT http://localhost:8000/questions/{id}`.
+- Lorsque l'on valide le formulaire de suppression de question, la suppresion de la question dans la page doit se baser sur le résultat de la requête `DELETE http://localhost:8000/questions/{id}`.
