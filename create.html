@@ -10,93 +10,36 @@
   <!------ Include the above in your HEAD tag ---------->   
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" rel="stylesheet" />
   <link href="css/styles.css" rel="stylesheet" />
+
+  <template id="question-template">
+    <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+      <div class="question-name">
+      </div>
+      <form class="question-name-edit d-none flex-grow-1">
+        <div class="d-flex flex-grow-1">
+          <input type="text" class="question-name-edit-text form-control form-control-sm" />
+          <button type="submit" class="question-name-edit-submit btn btn-success btn-sm">Valider</button>
+        </div>
+      </form>
+      <div class="question-buttons d-flex">
+        <button class="question-edit-button btn btn-primary btn-sm">Modifier</button>
+        <button class="question-delete-button btn btn-danger btn-sm">Supprimer</button>
+      </div>
+    </li>
+  </template>
 </head>
 <body>
 <div class="container">
   <h1 class="mt-4 mb-4">Mode création</h1>
   <h2 class="mb-4">Listes des questions</h2>
   
-  <ul class="list-group mb-4">
-    <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-      <div class="question-name">
-        Combien de joueurs y a-t-il dans une équipe de football?
-      </div>
-      <form class="question-name-edit d-none flex-grow-1">
-        <div class="d-flex flex-grow-1">
-          <input type="text" class="question-name-edit-text form-control form-control-sm" />
-          <button type="submit" class="question-name-edit-submit btn btn-success btn-sm">Valider</button>
-        </div>
-      </form>
-      <div class="question-buttons d-flex">
-        <button class="question-edit-button btn btn-primary btn-sm">Modifier</button>
-        <button class="question-delete-button btn btn-danger btn-sm">Supprimer</button>
-      </div>
-    </li>
-    <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-      <div class="question-name">
-        Combien de temps la lumière du soleil met-elle pour nous parvenir?
-      </div>
-      <form class="question-name-edit d-none flex-grow-1">
-        <div class="d-flex flex-grow-1">
-          <input type="text" class="question-name-edit-text form-control form-control-sm" />
-          <button type="submit" class="question-name-edit-submit btn btn-success btn-sm">Valider</button>
-        </div>
-      </form>
-      <div class="question-buttons d-flex">
-        <button class="question-edit-button btn btn-primary btn-sm">Modifier</button>
-        <button class="question-delete-button btn btn-danger btn-sm">Supprimer</button>
-      </div>
-    </li>
-    <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-      <div class="question-name">
-        En 1582, le pape Grégoire XIII a décidé de réformer le calendrier instauré par Jules César. Mais quel était le premier mois du calendrier julien?
-      </div>
-      <form class="question-name-edit d-none flex-grow-1">
-        <div class="d-flex flex-grow-1">
-          <input type="text" class="question-name-edit-text form-control form-control-sm" />
-          <button type="submit" class="question-name-edit-submit btn btn-success btn-sm">Valider</button>
-        </div>
-      </form>
-      <div class="question-buttons d-flex">
-        <button class="question-edit-button btn btn-primary btn-sm">Modifier</button>
-        <button class="question-delete-button btn btn-danger btn-sm">Supprimer</button>
-      </div>
-    </li>
-    <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-      <div class="question-name">
-        Lequel de ces signes du zodiaque n'est pas un signe d'Eau?
-      </div>
-      <form class="question-name-edit d-none flex-grow-1">
-        <div class="d-flex flex-grow-1">
-          <input type="text" class="question-name-edit-text form-control form-control-sm" />
-          <button type="submit" class="question-name-edit-submit btn btn-success btn-sm">Valider</button>
-        </div>
-      </form>
-      <div class="question-buttons d-flex">
-        <button class="question-edit-button btn btn-primary btn-sm">Modifier</button>
-        <button class="question-delete-button btn btn-danger btn-sm">Supprimer</button>
-      </div>
-    </li>
-    <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-      <div class="question-name">
-        Combien de doigts ai-je dans mon dos?
-      </div>
-      <form class="question-name-edit d-none flex-grow-1">
-        <div class="d-flex flex-grow-1">
-          <input type="text" class="question-name-edit-text form-control form-control-sm" />
-          <button type="submit" class="question-name-edit-submit btn btn-success btn-sm">Valider</button>
-        </div>
-      </form>
-      <div class="question-buttons d-flex">
-        <button class="question-edit-button btn btn-primary btn-sm">Modifier</button>
-        <button class="question-delete-button btn btn-danger btn-sm">Supprimer</button>
-      </div>
-    </li>
+  <ul id="questions-list" class="list-group mb-4">
   </ul>
   <h2 class="mb-4">Ajouter une question</h2>
   <div class="d-flex">
     <input id="new-question-text" class="form-control" placeholder="Entrez le texte de la nouvelle question" />
     <button id="new-question-submit" class="btn btn-primary">Ajouter</a>
   </div>
+  <script src="js/data.js"></script>
   <script src="js/edit.js"></script>
 </div>
