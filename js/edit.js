@@ -9,15 +9,17 @@ function createQuestionItem(question) {
   // Récupère la liste des questions
   const questionsList = document.getElementById('questions-list');
   // Crée une copie d'un élément à insérer dans la liste des questions
-  const newQuestionItem = questionTemplate.content.cloneNode(true);
+  const newQuestionItem = document.importNode(questionTemplate.content, true);
   // Modifie le texte de la question dans ce nouvel élément
   const newQuestionText = newQuestionItem.querySelector('.question-name');
   newQuestionText.innerText = question.text;
 
   // Récupère le bouton "Modifier" présent dans l'élément
   const newQuestionEditButton = newQuestionItem.querySelector('.question-edit-button');
-  // récupère le formulaire de modification de la question
+  // Récupère le formulaire de modification de la question
   const newQuestionNameEditForm = newQuestionItem.querySelector('.question-name-edit');
+  // Récupère le champ texte contenu dans le formulaire de modification de la question
+  const newQuestionNameEditText = newQuestionNameEditForm.querySelector('.question-name-edit-text');
   // Associe une action au fait de cliquer sur le bouton "Modifier" présent dans l'élément
   newQuestionEditButton.addEventListener('click', function() {
     // Fait disparaître le texte, et apparaître le formulaire
@@ -29,7 +31,6 @@ function createQuestionItem(question) {
     newQuestionNameEditText.value = newQuestionText.innerText;
   });
 
-  const newQuestionNameEditText = newQuestionNameEditForm.querySelector('.question-name-edit-text');
   // Associe une action au fait de valider le formulaire de modification présent dans l'élément
   newQuestionNameEditForm.addEventListener('submit', function(event) {
     // Empêche le rechargement de la page
@@ -40,9 +41,19 @@ function createQuestionItem(question) {
     newQuestionNameEditForm.classList.add('d-none');
     newQuestionText.classList.remove('d-none');
   });
-  
+
+  // Récupère le bouton "Supprimer" présent dans l'élément
+  const newQuestionDeleteButton = newQuestionItem.querySelector('.question-delete-button');
+  // Associe une action au fait de cliquer sur le bouton "Supprimer" présent dans l'élément
+  newQuestionDeleteButton.addEventListener('click', function() {
+    // Enlève la question de la liste
+    container.remove();
+  });
+
   // Ajoute ce nouvel élément dans la liste
-  questionsList.appendChild(newQuestionItem);
+  const container = document.createElement('div');
+  questionsList.appendChild(container);
+  container.appendChild(newQuestionItem);
 }
 
 // Récupère le formulaire d'ajout de question
