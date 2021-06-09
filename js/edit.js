@@ -13,8 +13,36 @@ function createQuestionItem(question) {
   // Modifie le texte de la question dans ce nouvel élément
   const newQuestionText = newQuestionItem.querySelector('.question-name');
   newQuestionText.innerText = question.text;
+
+  // Récupère le bouton "Modifier" présent dans l'élément
+  const newQuestionEditButton = newQuestionItem.querySelector('.question-edit-button');
+  // récupère le formulaire de modification de la question
+  const newQuestionNameEditForm = newQuestionItem.querySelector('.question-name-edit');
+  // Associe une action au fait de cliquer sur le bouton "Modifier" présent dans l'élément
+  newQuestionEditButton.addEventListener('click', function() {
+    // Fait disparaître le texte, et apparaître le formulaire
+    newQuestionText.classList.add('d-none');
+    newQuestionNameEditForm.classList.remove('d-none');
+    // Déplace le curseur de l'utilisateur dans le champ texte qui vient d'être révélé
+    newQuestionNameEditText.focus();
+    // Remplace le contenu du champ texte par le texte actuel de la question
+    newQuestionNameEditText.value = newQuestionText.innerText;
+  });
+
+  const newQuestionNameEditText = newQuestionNameEditForm.querySelector('.question-name-edit-text');
+  // Associe une action au fait de valider le formulaire de modification présent dans l'élément
+  newQuestionNameEditForm.addEventListener('submit', function(event) {
+    // Empêche le rechargement de la page
+    event.preventDefault();
+    // Modifie le texte de la question à partir du texte saisi
+    newQuestionText.innerText = newQuestionNameEditText.value;
+    // Fait apparaître le texte, et disparaître le formulaire
+    newQuestionNameEditForm.classList.add('d-none');
+    newQuestionText.classList.remove('d-none');
+  });
+  
   // Ajoute ce nouvel élément dans la liste
-  questionsList.appendChild(newQuestionItem);  
+  questionsList.appendChild(newQuestionItem);
 }
 
 // Récupère le formulaire d'ajout de question
