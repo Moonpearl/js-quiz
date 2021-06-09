@@ -25,6 +25,10 @@ newQuestionForm.addEventListener('submit', function(event) {
   event.preventDefault();
   // Récupère le champ texte du formulaire
   const newQuestionTextInput = document.getElementById('new-question-text');
+  // Si le champ texte est vide, inerrompt la fonction
+  if (newQuestionTextInput.value === '') {
+    return;
+  }
   // Crée une nouvelle question dans la liste à partir du texte saisi
   createQuestionItem({
     text: newQuestionTextInput.value
